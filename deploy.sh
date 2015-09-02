@@ -2,7 +2,7 @@
 
 SERVERS=(1 2 3 4 5)
 
-VM_IMAGE="coracle-1-20150827-207674"
+VM_IMAGE="coracle-1-20150902-712826"
 LOCATION='North Europe'
 
 for NAME in ${SERVERS[*]}
