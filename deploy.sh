@@ -10,4 +10,5 @@ do
 	DNS_NAME="measurement-server-"$NAME".cloudapp.net"
 	echo "creating $DNS_NAME in $LOCATION"
 	azure vm create -v --location "$LOCATION" -e --vm-size "Small" $DNS_NAME $VM_IMAGE
+	azure vm endpoint create "measurement-server-"$NAME 80 80
 done
