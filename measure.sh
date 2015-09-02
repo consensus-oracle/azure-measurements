@@ -16,7 +16,10 @@ do
 		echo "pinging $SNAME"
 		hping3 $SNAME -c 3 -p 80 -S 2> $TEMP_FILE
 		RTT=`cat $TEMP_FILE | grep round-trip | awk -F '/' '{print $4}'`
-		TIME=`date`
-		echo "$TIME, $NAME, $RTT" >> $LOG_FILE 
+		if [$RTT -ne ""]
+		then
+			TIME=`date`
+			echo "$TIME, $NAME, $RTT" >> $LOG_FILE 
+		fi
 	done
 done
