@@ -15,6 +15,7 @@ touch $HIST_FILE
 
 while true
 do
+	echo "start pinging server set"
 	for NAME in ${SERVERS[*]}
 	do
 		SNAME="measurement-server-"$NAME".cloudapp.net"
@@ -24,8 +25,10 @@ do
 		RTT=`cat $TEMP_FILE | grep round-trip | awk -F '/' '{print $4}'`
 		if [ "$RTT" != "" ]
 		then
+			echo "ping to $SNAME successful"
 			TIME=`date`
 			echo "$TIME, $NAME, $RTT" >> $LOG_FILE 
 		fi
 	done
+	echo "finish pinging server set"
 done
