@@ -20,7 +20,7 @@ do
 	do
 		SNAME="measurement-server-"$NAME".cloudapp.net"
 		echo "pinging $SNAME"
-		hping3 $SNAME -c 3 -p 80 -S 2> $TEMP_FILE
+		sudo hping3 $SNAME -c 3 -p 80 -S 2> $TEMP_FILE
 		cat $TEMP_FILE >> $HIST_FILE
 		RTT=`cat $TEMP_FILE | grep round-trip | awk -F '/' '{print $4}'`
 		if [ "$RTT" != "" ]
