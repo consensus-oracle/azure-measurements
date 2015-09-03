@@ -18,9 +18,11 @@ do
 	do
 		SNAME="measurement-server-"$NAME".cloudapp.net"
 		echo "pinging $SNAME"
+		touch $HIST_FILE
 		sudo hping3 $SNAME -c 10 -p 80 -S 2> $TEMP_FILE
 		cat $TEMP_FILE >> $HIST_FILE
 		RTT=`awk '/round-trip/ {print $4}' $TEMP_FILE | awk -F '/' '{print $1", "$2", " $3}'`
+		rm $HIST_FILE
 		if [ "$RTT" != "" ]
 		then
 			echo "ping to $SNAME successful"
