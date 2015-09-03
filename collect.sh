@@ -1,11 +1,10 @@
 #!/bin/bash
 
-SERVERS=(1 2 3 4 5)
+source common.sh 
 FILENAME="hping_log.csv"
 
 for NAME in ${SERVERS[*]}
 do
-	USER="azureuser"
 	ADDR="measurement-server-"$NAME".cloudapp.net"
 	scp -i ~/.ssh/azure_key $USER@$ADDR:~/azure-measurements/$FILENAME ~/azure-measurements/results/$NAME"-results.csv" 
 done

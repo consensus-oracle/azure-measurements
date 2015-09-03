@@ -20,7 +20,7 @@ do
 		echo "pinging $SNAME"
 		sudo hping3 $SNAME -c 10 -p 80 -S 2> $TEMP_FILE
 		cat $TEMP_FILE >> $HIST_FILE
-		RTT= `awk '/round-trip/ {print $4}' $TEMP_FILE | awk -F '/' '{print $1", "$2", " $3}'`
+		RTT=`awk '/round-trip/ {print $4}' $TEMP_FILE | awk -F '/' '{print $1", "$2", " $3}'`
 		if [ "$RTT" != "" ]
 		then
 			echo "ping to $SNAME successful"
