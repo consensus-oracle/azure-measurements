@@ -1,8 +1,8 @@
 #!/bin/bash
 
-SERVERS=(1 2 3 4 5)
+source common.sh
 
-VM_IMAGE="coracle-1-20150903-769972"
+VM_IMAGE="coracle-1-20150903-977368"
 LOCATION='North Europe'
 
 for NAME in ${SERVERS[*]}

@@ -9,6 +9,8 @@ touch $LOG_FILE
 touch $TEMP_FILE
 touch $HIST_FILE
 
+ID=`dnsdomainname | awk -F '.' '{print $2}' | awk -F '-' '{print $3}'`
+
 while true
 do
 	echo "start pinging server set"
@@ -22,8 +24,8 @@ do
 		if [ "$RTT" != "" ]
 		then
 			echo "ping to $SNAME successful"
-			TIME=`date`
-			echo "$TIME, $NAME, $RTT" >> $LOG_FILE 
+			TIME=`date +"%T"`
+			echo "$TIME, $ID, $NAME, $RTT" >> $LOG_FILE 
 		fi
 	done
 	echo "finish pinging server set"
