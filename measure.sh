@@ -1,6 +1,8 @@
 #!/bin/bash
 
-source common.sh
+DIR="/home/azureuser/azure-measurements/"
+
+source $DIR"common.sh"
 
 TEMP_FILE=$DIR"output.temp"
 HIST_FILE=$DIR"output.hist"
