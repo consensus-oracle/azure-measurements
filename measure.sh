@@ -1,10 +1,6 @@
 #!/bin/bash
 
-SERVERS=(1 2 3 4 5)
-
-DIR="/home/azureuser/azure-measurements/"
-
-LOG_FILE=$DIR"hping_log.csv"
+source common.sh
 
 TEMP_FILE=$DIR"output.temp"
 HIST_FILE=$DIR"output.hist"
@@ -20,9 +16,9 @@ do
 	do
 		SNAME="measurement-server-"$NAME".cloudapp.net"
 		echo "pinging $SNAME"
-		sudo hping3 $SNAME -c 3 -p 80 -S 2> $TEMP_FILE
+		sudo hping3 $SNAME -c 10 -p 80 -S 2> $TEMP_FILE
 		cat $TEMP_FILE >> $HIST_FILE
-		RTT=`cat $TEMP_FILE | grep round-trip | awk -F '/' '{print $4}'`
+		RTT= awk '/round-trip/ {print $4}' $TEMP_FILE | awk -F '/' '{print $1", "$2", " $3}'
 		if [ "$RTT" != "" ]
 		then
 			echo "ping to $SNAME successful"
@@ -31,4 +27,5 @@ do
 		fi
 	done
 	echo "finish pinging server set"
+	sleep 20
 done
