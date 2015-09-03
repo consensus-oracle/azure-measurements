@@ -6,7 +6,7 @@ TEMP_FILE=$DIR"output.temp"
 HIST_FILE=$DIR"output.hist"
 
 touch $LOG_FILE
-touch $TEMP_FILE
+rm $TEMP_FILE
 touch $HIST_FILE
 
 ID=`dnsdomainname | awk -F '.' '{print $2}' | awk -F '-' '{print $3}'`
