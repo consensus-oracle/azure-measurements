@@ -11,9 +11,11 @@ touch $HIST_FILE
 
 ID=`dnsdomainname | awk -F '.' '{print $2}' | awk -F '-' '{print $3}'`
 
+echo "(re)starting" >> $HIST_FILE
 while true
 do
 	echo "start pinging server set"
+	echo "start pinging server set" >> $HIST_FILE
 	for NAME in ${SERVERS[*]}
 	do
 		SNAME="measurement-server-"$NAME".cloudapp.net"
